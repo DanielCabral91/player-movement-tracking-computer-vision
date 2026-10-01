@@ -1,0 +1,18 @@
+# Core computer vision / tracking
+ultralytics
+opencv-python
+numpy
+scipy
+
+# Data analysis
+pandas
+
+# Visualisation
+matplotlib
+seaborn
+Pillow
+
+# Notebook environment
+jupyterlab
+ipywidgets
+ipython
