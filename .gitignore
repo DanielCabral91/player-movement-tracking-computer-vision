@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Model weights
+*.pt
+*.pth
+*.onnx
+*.engine
+!models/README.md
+
+# Raw / generated media
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.gif
+!media/README.md
+
+# Generated tracking outputs
+outputs/*
+!outputs/README.md
+
+# Local input data
+data/input/*
+!data/input/.gitkeep
+
+# Large / derived datasets
+*.parquet
+*.feather
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
