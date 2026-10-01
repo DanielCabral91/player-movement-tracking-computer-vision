@@ -42,12 +42,22 @@ jobs:
           if missing:
               raise SystemExit(f'Missing required files: {missing}')
 
+          def python_only_source(source: str) -> str:
+              """Remove IPython magic/shell lines before Python syntax compilation."""
+              lines = []
+              for line in source.splitlines():
+                  stripped = line.lstrip()
+                  if stripped.startswith(('%', '!')):
+                      continue
+                  lines.append(line)
+              return '\n'.join(lines)
+
           for notebook_path in Path('notebooks').glob('*.ipynb'):
               notebook = json.loads(notebook_path.read_text(encoding='utf-8'))
               for index, cell in enumerate(notebook.get('cells', [])):
                   if cell.get('cell_type') != 'code':
                       continue
-                  source = ''.join(cell.get('source', []))
+                  source = python_only_source(''.join(cell.get('source', [])))
                   try:
                       compile(source, f'{notebook_path}:cell-{index}', 'exec')
                   except SyntaxError as exc:
