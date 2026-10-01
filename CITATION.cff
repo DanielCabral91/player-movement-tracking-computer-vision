@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this project, please cite it using the metadata below."
+title: "Player Movement Tracking using Computer Vision"
+type: software
+authors:
+  - family-names: Cruz
+    given-names: Eduardo
+  - family-names: Cabral
+    given-names: Daniel
+  - family-names: Gonçalves
+    given-names: David
+  - family-names: Vieira
+    given-names: Guilherme
+year: 2025
+institution: "Sports Data Campus"
+repository-code: "https://github.com/DanielCabral91/player-movement-tracking-computer-vision"
