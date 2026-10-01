@@ -11,6 +11,5 @@ authors:
     given-names: David
   - family-names: Vieira
     given-names: Guilherme
-year: 2025
-institution: "Sports Data Campus"
+abstract: "Computer-vision research prototype for football player detection, multi-object tracking, team classification and tactical analysis from broadcast video, developed as the 2025 final project of the Master in Big Data Applied to Football at Sports Data Campus."
 repository-code: "https://github.com/DanielCabral91/player-movement-tracking-computer-vision"
