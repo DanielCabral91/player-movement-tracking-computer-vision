@@ -61,9 +61,13 @@ The tracking dataset contains frame-level information such as time, player ID, t
 
 ```text
 .
+├── .github/
+│   └── workflows/
+│       └── validate-repository.yml
 ├── README.md
 ├── AUTHORS.md
 ├── CITATION.cff
+├── CONTRIBUTING.md
 ├── requirements.txt
 ├── .gitignore
 ├── configs/
@@ -71,9 +75,13 @@ The tracking dataset contains frame-level information such as time, player ID, t
 ├── notebooks/
 │   ├── 01_hsv_calibration.ipynb
 │   ├── 02_tracking_pipeline.ipynb
-│   └── 03_tactical_metrics.ipynb
-├── data/
+│   ├── 03_tactical_metrics.ipynb
 │   └── README.md
+├── data/
+│   ├── README.md
+│   ├── input/
+│   └── sample/
+│       └── tracking_sample.csv
 ├── models/
 │   └── README.md
 ├── outputs/
@@ -81,7 +89,11 @@ The tracking dataset contains frame-level information such as time, player ID, t
 ├── reports/
 │   └── README.md
 └── docs/
-    └── methodology.md
+    ├── methodology.md
+    ├── reproducibility.md
+    ├── limitations.md
+    ├── data_schema.md
+    └── project_structure.md
 ```
 
 ## Notebooks
@@ -154,7 +166,12 @@ Run:
 notebooks/02_tracking_pipeline.ipynb
 ```
 
-Expected outputs are written under `outputs/`.
+Canonical tracking outputs:
+
+```text
+outputs/tracking_output.csv
+outputs/tracking_video.mp4
+```
 
 ### 5. Calculate metrics
 
@@ -162,6 +179,12 @@ Run:
 
 ```text
 notebooks/03_tactical_metrics.ipynb
+```
+
+The metrics notebook writes figures and animations under:
+
+```text
+outputs/metrics/
 ```
 
 ## Technical notes
@@ -183,13 +206,19 @@ This is a research prototype. Important limitations include:
 - HSV team classification sensitivity to lighting, shadows and similar kit colours;
 - computational constraints that limited model training and full-match processing.
 
-These limitations are documented because they materially affect the interpretation of derived physical and tactical metrics.
+These limitations are documented because they materially affect the interpretation of derived physical and tactical metrics. See [`docs/limitations.md`](docs/limitations.md) for the detailed record.
 
 ## Reproducibility and data policy
 
 Large model weights, raw broadcast footage and generated videos are excluded from normal Git history. This keeps the repository lightweight and avoids redistributing assets whose licensing may differ from the source code.
 
 The project depends on third-party software and datasets, each of which remains subject to its own licence or terms of use. In particular, the included BoT-SORT configuration retains the upstream Ultralytics licence notice.
+
+Detailed reproduction notes are available in [`docs/reproducibility.md`](docs/reproducibility.md), and the tracking CSV schema is documented in [`docs/data_schema.md`](docs/data_schema.md).
+
+## Validation
+
+A lightweight GitHub Actions workflow validates the presence of the core repository files and checks the Python syntax of notebook code cells while ignoring Jupyter-specific magic/shell lines.
 
 ## Academic report
 
