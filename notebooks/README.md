@@ -1,27 +1,38 @@
 # Notebooks
 
-The original project is organised around three Jupyter workflows:
+The project is organised around three Jupyter workflows:
 
 1. `01_hsv_calibration.ipynb` — interactive HSV calibration for team colours.
 2. `02_tracking_pipeline.ipynb` — YOLOv8 detection, BoT-SORT tracking, ID management, team classification, coordinate estimation and CSV/video export.
 3. `03_tactical_metrics.ipynb` — tactical and physical metrics calculated from the generated tracking CSV.
 
-## Repository import policy
+## Repository policy
 
 Notebook outputs are removed before version control so the repository stores source logic rather than large embedded plots, videos or execution artefacts.
 
-The HSV calibration notebook has already been normalised and committed in this setup branch. The two larger analysis notebooks should be imported as cleaned, output-free versions before the setup branch is merged. Their original project files are preserved separately during this repository migration.
+All three repository-ready notebooks are committed in this branch. The two larger notebooks were cleaned from the original project versions, had execution outputs removed, and were adapted to repository-relative paths without intentionally changing the underlying project logic.
 
-## Path convention
+## Execution order
 
-The repository-ready notebooks use relative paths:
+Run the notebooks from the repository root or from inside `notebooks/` in this order:
 
 ```text
-../models/best.pt
-../configs/botsort.yaml
-../data/input/sample.mp4
-../outputs/tracking_data.csv
-../outputs/tracking_demo.mp4
+01_hsv_calibration.ipynb
+02_tracking_pipeline.ipynb
+03_tactical_metrics.ipynb
 ```
 
-This avoids machine-specific paths and makes the workflow easier to reproduce after cloning.
+## Canonical paths
+
+The repository-ready workflow uses:
+
+```text
+models/best.pt
+data/input/sample.mp4
+configs/botsort.yaml
+outputs/tracking_output.csv
+outputs/tracking_video.mp4
+outputs/metrics/
+```
+
+The path-resolution cells account for execution either from the repository root or from inside the `notebooks/` directory.
